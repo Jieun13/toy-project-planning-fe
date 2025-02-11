@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginSuccess from './LoginSuccess';
+import Home from './Home';
+import Login from './Login';
 
-const App = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/test')
-        .then(response => {
-          setMessage(response.data);
-        })
-        .catch(error => {
-          console.error('There was an error!', error);
-        });
-  }, []);
-
-  return (
-      <div>
-        <h1>{message}</h1>
-      </div>
-  );
-};
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/loginSuccess" element={<LoginSuccess />} /> {/* ✅ 추가 */}
+            </Routes>
+        </Router>
+    );
+}
 
 export default App;
