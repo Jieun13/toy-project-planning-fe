@@ -34,10 +34,18 @@ const Home = () => {
                 <div>
                     <h2>안녕하세요, {user.username}님!</h2>
                     <h4>가입된 이메일 : {user.email}</h4>
+
+                    {/* 🔹 일정 보기 버튼 추가 */}
+                    <button onClick={() => navigate('/schedules')}>
+                        일정 보기
+                    </button>
+
                     <button onClick={() => {
                         localStorage.removeItem('access_token'); // 로그아웃 처리
                         navigate('/login');
-                    }}>로그아웃</button>
+                    }}>
+                        로그아웃
+                    </button>
                 </div>
             ) : (
                 <p>로딩 중...</p>
