@@ -28,6 +28,10 @@ const ScheduleDetail = () => {
             });
     }, [scheduleId, navigate]);
 
+    const handleUpdate = () => {
+        navigate(`/schedule/edit/${scheduleId}`, { state: { isEditing: true } });
+    };
+
     const handleDelete = async () => {
         const token = localStorage.getItem('access_token');
 
@@ -47,15 +51,23 @@ const ScheduleDetail = () => {
         }
     };
 
+    const homeButton = () => {
+        navigate('/schedule');
+    };
+
     if (!schedule) return <p>일정을 불러오는 중...</p>;
 
     return (
         <div className="schedule-detail-container">
+            <button onClick={homeButton} className='btn'>홈으로</button>
             <h2 className="schedule-title">{schedule.title}</h2>
             <p className="schedule-description">{schedule.description}</p>
             <p className="schedule-time">🕒 {new Date(schedule.startTime).toLocaleString()} ~ {new Date(schedule.endTime).toLocaleString()}</p>
             <p className="schedule-author">✍ 작성자: {schedule.author}</p>
-            <button onClick={handleDelete} className="delete-btn">일정 삭제</button>
+            <div style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
+                <button onClick={handleUpdate} className="update-btn">일정 수정</button>
+                <button onClick={handleDelete} className="delete-btn">일정 삭제</button>
+            </div>
         </div>
     );
 };

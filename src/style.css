@@ -46,7 +46,7 @@ h2 {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
+    background-color: midnightblue;
     color: white;
     border: none;
     border-radius: 5px;
@@ -56,11 +56,11 @@ h2 {
 }
 
 .submit-btn:hover {
-    background-color: #45a049;
+    background-color: darkblue;
 }
 
 .submit-btn:active {
-    background-color: #3e8e41;
+    background-color: darkblue;
 }
 
 /* 전체 컨테이너 */
@@ -104,21 +104,83 @@ h2 {
 
 /* 삭제 버튼 */
 .delete-btn {
-    width: 100%;
+    width: 20%;
     padding: 12px;
-    background-color: #ff6b6b;
+    background-color: #ff5252;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+/* 수정 버튼 */
+.update-btn {
+    width: 20%;
+    padding: 12px;
+    background-color: darkgray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
 }
 
 .delete-btn:hover {
-    background-color: #ff5252;
+    background-color: darkred;
 }
 
 .delete-btn:active {
-    background-color: #e04848;
+    background-color: darkred;
+}
+
+.update-btn:hover {
+    background-color: dimgrey;
+}
+
+.update-btn:active {
+    background-color: dimgrey;
+}
+
+.btn {
+    width: 10%;
+    padding: 12px;
+    background-color: midnightblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.react-calendar__tile {
+    border: 1px solid #d3d3d3; /* 날짜 타일에 경계선 추가 */
+    color: #333; /* 기본 날짜 글자 색 */
+}
+
+.react-calendar__tile--active {
+    background-color: lightgrey; /* 선택된 날짜 배경색 */
+    color: darkblue; /* 선택된 날짜 텍스트 색 */
+    font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    color: midnightblue; /* 요일 글자 색상 */
+    font-weight: bold;
+}
+/* 이전/다음 달로 이동하는 버튼(‹, ›) 텍스트 색상 */
+.react-calendar__navigation button {
+    color: #333; /* 원하는 색상으로 변경 */
+}
+
+/* 현재 달(2025년 2월) 텍스트 색상 */
+.react-calendar__navigation__label {
+    color: #333; /* 원하는 색상으로 변경 */
+    font-weight: bold;
 }

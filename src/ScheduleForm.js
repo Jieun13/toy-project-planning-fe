@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ScheduleService from './ScheduleService';
 import './style.css';
+import { useLocation } from 'react-router-dom';
 
 const ScheduleForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [startDateTime, setStartDateTime] = useState('');
     const [endDateTime, setEndDateTime] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
 
     const { scheduleId } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
+    const [isEditing, setIsEditing] = useState(location.state?.isEditing || false);
 
-    // 🔹 서버의 LocalDateTime(ISO 8601) → datetime-local 형식으로 변환하는 함수
     const formatDateTimeForInput = (dateTimeString) => {
-        if (!dateTimeString) return ''; // 🔹 null 체크 추가
-        return dateTimeString.slice(0, 16); // "2025-02-13T15:30:00" → "2025-02-13T15:30"
+        if (!dateTimeString) return '';
+        return dateTimeString.slice(0, 16);
     };
 
     useEffect(() => {
         const token = localStorage.getItem('access_token');
-
         if (!token) {
             alert('로그인이 필요합니다.');
             navigate('/login');
@@ -46,11 +46,10 @@ const ScheduleForm = () => {
         }
     }, [scheduleId, navigate]);
 
-    // 🔹 로컬 시간에서 UTC로 변환하는 함수
     const convertToUTC = (dateTime) => {
         const localDate = new Date(dateTime);
-        const offset = localDate.getTimezoneOffset(); // 분 단위 시간 차
-        localDate.setMinutes(localDate.getMinutes() - offset); // 로컬 시간에서 UTC로 변환
+        const offset = localDate.getTimezoneOffset();
+        localDate.setMinutes(localDate.getMinutes() - offset);
         return localDate.toISOString();
     };
 
@@ -64,18 +63,15 @@ const ScheduleForm = () => {
             return;
         }
 
-        // 🔹 로컬 시간에서 UTC로 변환
         const startDateTimeUTC = convertToUTC(startDateTime);
         const endDateTimeUTC = convertToUTC(endDateTime);
 
         const scheduleData = {
             title,
             description,
-            startDateTime: startDateTimeUTC, // UTC 시간으로 변환
-            endDateTime: endDateTimeUTC      // UTC 시간으로 변환
+            startDateTime: startDateTimeUTC,
+            endDateTime: endDateTimeUTC
         };
-
-        console.log("전송할 데이터:", scheduleData); // 👀 여기 추가
 
         try {
             if (isEditing) {
