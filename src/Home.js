@@ -45,8 +45,7 @@ const Home = () => {
                             localStorage.removeItem('access_token');
                             navigate('/login');
                         }}
-                    >
-                        로그아웃
+                    >로그아웃
                     </button>
                 </div>
             ) : (

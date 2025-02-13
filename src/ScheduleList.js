@@ -10,13 +10,6 @@ const ScheduleList = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const navigate = useNavigate();
 
-    const formatDate = (date) => {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    };
-
     // 일정 가져오는 함수
     const fetchSchedules = useCallback(() => {
         const token = localStorage.getItem('access_token');
@@ -44,16 +37,35 @@ const ScheduleList = () => {
         fetchSchedules();
     }, [fetchSchedules]);
 
-    // 날짜 필터링
     const filteredSchedules = schedules.filter(schedule => {
-        const scheduleDate = formatDate(new Date(schedule.startTime));
-        return scheduleDate === formatDate(selectedDate); // 선택된 날짜와 일치하는 일정만 필터링
+        const startDate = new Date(schedule.startTime);
+        const endDate = new Date(schedule.endTime);
+        const selected = new Date(selectedDate);
+
+        // 시간 정보를 무시하고 날짜만 비교
+        startDate.setHours(0, 0, 0, 0);  // startDate의 시간을 00:00로 설정
+        endDate.setHours(23, 59, 59, 999);  // endDate의 시간을 23:59로 설정
+        selected.setHours(0, 0, 0, 0);  // selectedDate의 시간을 00:00로 설정
+
+        // 선택된 날짜가 시작일자와 종료일자 사이에 있는지 확인
+        return selected >= startDate && selected <= endDate;
     });
 
-    // 📅 해당 날짜에 일정이 있는지 체크하여 표시
     const tileContent = ({ date, view }) => {
         if (view === 'month') {
-            const scheduleForDate = schedules.filter(schedule => formatDate(new Date(schedule.startTime)) === formatDate(date));
+            const targetDate = new Date(date);
+            targetDate.setHours(0, 0, 0, 0); // targetDate의 시간을 00:00으로 설정
+
+            const scheduleForDate = schedules.filter(schedule => {
+                const startDate = new Date(schedule.startTime);
+                const endDate = new Date(schedule.endTime);
+
+                startDate.setHours(0, 0, 0, 0);  // startDate의 시간을 00:00로 설정
+                endDate.setHours(23, 59, 59, 999);  // endDate의 시간을 23:59로 설정
+
+                // 날짜가 범위 내에 포함되는지 체크
+                return targetDate >= startDate && targetDate <= endDate;
+            });
 
             if (scheduleForDate.length > 0) {
                 return (
