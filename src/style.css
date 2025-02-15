@@ -106,7 +106,7 @@ h2 {
 .delete-btn {
     width: 20%;
     padding: 12px;
-    background-color: #ff5252;
+    background-color: red;
     color: white;
     border: none;
     border-radius: 5px;
@@ -159,6 +159,19 @@ h2 {
     margin-left: 10px;
 }
 
+.btn-toggle {
+    width: 25%;
+    padding: 10px;
+    background-color: midnightblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
 .react-calendar__tile {
     border: 1px solid #d3d3d3; /* 날짜 타일에 경계선 추가 */
     color: #333; /* 기본 날짜 글자 색 */
@@ -183,4 +196,97 @@ h2 {
 .react-calendar__navigation__label {
     color: #333; /* 원하는 색상으로 변경 */
     font-weight: bold;
+}
+
+/* 초대된 사용자 목록 테이블 스타일 */
+.invitees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;  /* 표 모서리를 둥글게 */
+}
+
+.invitees-table th, .invitees-table td {
+    padding: 7px 7px;
+    text-align: center;
+    border: 1px solid #ddd;  /* 테두리 색상 */
+    font-size: 12px;  /* 글씨 크기 */
+}
+
+.invitees-table th {
+    background-color: #f4f4f4;  /* 헤더 배경 색상 */
+    color: #333;  /* 헤더 글자 색 */
+    font-weight: bold;
+}
+
+.invitees-table tr:nth-child(even) {
+    background-color: #f9f9f9;  /* 짝수 행 배경 색상 */
+}
+
+.invitees-table tr:hover {
+    background-color: #eaeaea;  /* 마우스 오버 시 배경 색상 */
+}
+
+.invitees-table td {
+    color: #555;  /* 셀 텍스트 색 */
+}
+
+/* 테이블 내 각 상태 색상 */
+.invitees-table td:nth-child(5) {
+    font-weight: bold;
+}
+
+.invitees-table .status-pending {
+    color: #ffc107;  /* 대기 상태 색상 (노란색) */
+}
+
+.invitees-table .status-accepted {
+    color: #28a745;  /* 수락 상태 색상 (초록색) */
+}
+
+.invitees-table .status-declined {
+    color: #dc3545;  /* 거절 상태 색상 (빨간색) */
+}
+
+.invite-email-input {
+    width: 30%;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.invitee-cancel-btn{
+    width: 80%;
+    padding: 8px;
+    background-color: dimgrey;
+    font-size: 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.invitee-delete-btn{
+    width: 80%;
+    padding: 8px;
+    background-color: red;
+    font-size: 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.invitee-delete-btn:hover {
+    background-color: darkred;
+}
+.invitee-delete-btn:active {
+    background-color: darkred;
+}
+
+.invitee-cancel-btn:hover {
+    background-color: darkgray;
+}
+.invitee-cancel-btn-btn:active {
+    background-color: grey;
 }

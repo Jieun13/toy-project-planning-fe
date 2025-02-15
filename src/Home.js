@@ -47,6 +47,12 @@ const Home = () => {
                         }}
                     >로그아웃
                     </button>
+
+                    <button
+                        onClick={()=>{
+                            navigate('/invitations');
+                        }}
+                    >초대 신청 목록</button>
                 </div>
             ) : (
                 <p>로딩 중...</p>

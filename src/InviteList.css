@@ -1,0 +1,61 @@
+.invite-response-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.invitees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.invitees-table th, .invitees-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.invitees-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.accept-btn {
+    width: 30%;
+    padding: 8px;
+    background-color: darkblue;
+    font-size: 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.decline-btn {
+    width: 30%;
+    padding: 8px;
+    background-color: darkred;
+    font-size: 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+table {
+    margin-top: 20px;
+}
+
+.decline-btn:hover {
+    background-color: red;
+}
+
+.decline-btn:active {
+    background-color: red;
+}
+
+.accept-btn:hover {
+    background-color: blue;
+}
+
+.accept-btn:active {
+    background-color: blue;
+}
