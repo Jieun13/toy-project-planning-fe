@@ -4,6 +4,12 @@ const API_URL = 'http://localhost:8080/api/schedule';
 
 const ScheduleService = {
 
+    getCurrentUser : (token) => {
+        return axios.get('http://localhost:8080/api/user',{
+            headers: { Authorization: `Bearer ${token}` }
+        });
+    },
+
     getSchedule: (token, startDate, endDate) => {
         return axios.get(API_URL, {
             headers: { Authorization: `Bearer ${token}` },

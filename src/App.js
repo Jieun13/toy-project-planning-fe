@@ -7,10 +7,12 @@ import ScheduleForm from './ScheduleForm';
 import ScheduleDetail from "./ScheduleDetail";  // 일정 생성 및 수정 폼 컴포넌트 추가
 import Chat from "./Chat"
 import InviteList from "./InviteList";
+import NevigateBar from "./component/NevigateBar";
 
 function App() {
     return (
         <Router>
+            <NevigateBar />  {/* 네비게이션 바 추가 */}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>

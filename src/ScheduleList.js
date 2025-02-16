@@ -89,13 +89,8 @@ const ScheduleList = () => {
 
     return (
         <div style={{padding: '20px'}}>
-            <div style={{textAlign: 'left', marginBottom: '20px'}}>
-                <Link to="/">
-                    <button style={buttonStyle}>홈으로</button>
-                </Link>
-            </div>
 
-            <h2 style={{textAlign: 'center', marginBottom: '20px'}}>일정 목록</h2>
+            <h1 style={{textAlign: 'center', marginBottom: '40px'}}>Schedule</h1>
 
             {/* 📅 달력 추가 - 요일을 한글로 표시 */}
             <div style={{display: 'flex', justifyContent: 'center', marginBottom: '20px', width: '100%'}}>
@@ -147,11 +142,15 @@ const ScheduleList = () => {
                                     <Link to={`/schedule/${schedule.id}`} style={linkStyle}>
                                         <strong>{schedule.title}</strong>
                                     </Link>
-                                    <br/>
-                                    {schedule.description && <p>{schedule.description}</p>}
-                                    🕒 일시 : {timeRange}
-                                    <br/>
-                                    ✍ 작성자 : {schedule.author}
+                                    <div className="schedule-list-time">
+                                        <span style={{color: 'dimgray'}}>created_at : </span> {timeRange}<br/>
+                                        <span style={{color: 'dimgray'}}>created_by : </span> {schedule.author}
+                                    </div>
+                                    <p className="schedule-list-description">
+                                        {schedule.description.length > 50
+                                            ? `${schedule.description.substring(0, 50)} ...`
+                                            : schedule.description}
+                                    </p>
                                 </li>
                             </div>
                         );
@@ -181,6 +180,7 @@ const scheduleItemStyle = {
     marginBottom: '15px',
     borderRadius: '8px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    border: '0.1px solid #d3d3d3',
     transition: 'transform 0.2s ease-in-out',
 };
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ScheduleService from './ScheduleService';
-import { Link } from "react-router-dom";
 import './InviteList.css';
 
 const InviteResponse = ({ scheduleId }) => {
@@ -58,13 +57,10 @@ const InviteResponse = ({ scheduleId }) => {
     if (loading) return <p>초대 목록을 불러오는 중...</p>;
 
     return (
-        <div style={{ padding: '20px' }}>
-            <div style={{ textAlign: 'left', marginBottom: '20px' }}>
-                <Link to="/">
-                    <button className="btn">홈으로</button>
-                </Link>
+        <div style={{padding: '20px'}}>
+            <h2 style={{textAlign: 'center', margin: '30px 30px'}}>초대 목록</h2>
+            <div>
                 <div className="invite-response-container">
-                    <h3>초대 목록</h3>
                     {invites.length === 0 ? (
                         <p>초대가 없습니다.</p>
                     ) : (
@@ -88,8 +84,12 @@ const InviteResponse = ({ scheduleId }) => {
                                     <td>
                                         {invite.status === 'PENDING' ? (
                                             <>
-                                                <button onClick={() => handleResponse(invite.id, true)} className="accept-btn">수락</button>
-                                                <button onClick={() => handleResponse(invite.id, false)} className="decline-btn">거절</button>
+                                                <button onClick={() => handleResponse(invite.id, true)}
+                                                        className="accept-btn">수락
+                                                </button>
+                                                <button onClick={() => handleResponse(invite.id, false)}
+                                                        className="decline-btn">거절
+                                                </button>
                                             </>
                                         ) : (
                                             <span>{invite.status === 'ACCEPTED' ? '수락됨' : '거절됨'}</span>
