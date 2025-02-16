@@ -130,8 +130,6 @@ const ScheduleDetail = () => {
                             <thead>
                             <tr>
                                 <th>번호</th>
-                                <th>scheduleId</th>
-                                <th>scheduleUserId</th>
                                 <th>이메일</th>
                                 <th>권한</th>
                                 <th>상태</th>
@@ -142,8 +140,6 @@ const ScheduleDetail = () => {
                             {invitees.map((invitee, index) => (
                                 <tr key={invitee.id}>
                                     <td>{index + 1}</td>
-                                    <td>{invitee.scheduleId}</td>
-                                    <td>{invitee.id}</td>
                                     <td>{invitee.email}</td>
                                     <td>{invitee.role}</td>
                                     <td className={getStatusColor(invitee.status)}>
